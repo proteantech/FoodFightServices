@@ -1,0 +1,37 @@
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+
+<input type="button" id="ajaxButt" value="Click Me"></input>
+<div id="feedme">Nothing Yet.</div>
+
+<script type="text/javascript">
+//<![CDATA[
+$( document ).ready(function() {
+console.log( "ready!" );
+
+$('#ajaxButt').click(function(){
+	$.ajax({
+		// url: "http://foodfightservices.herokuapp.com/hi"
+		url: "http://localhost:4567/hi"
+	})
+	.done(function( data ) {
+		// $( "#feedme" ).html( "<strong>" + JSON.stringify(data) + "</strong>" );
+		$( "#feedme" ).html( "<strong>" + data + "</strong>" );
+	})
+	.fail(function(jqXHR, textStatus, errorThrown) {
+		console.log('fail: ' + textStatus + ' errorThrown=' + errorThrown);
+	});
+
+  });
+
+});
+//]]>
+</script> 
+
+</body>
+
+</html>
